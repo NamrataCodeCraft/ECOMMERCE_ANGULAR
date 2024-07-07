@@ -23,51 +23,75 @@ export class ProductsComponent implements OnInit {
     "productDescription": "",
     "createdDate": new Date(),
     "deliveryTimeSpan": "",
-    "categoryId": 0,
+    "categoryId": 58,
     "productImageUrl": "",
-    "categoryName": ""
   }
   categoryList: any[] = []
-
-
+  productsList: any[] = []
 
   constructor(private productSrv: ProductService) {
 
   }
 
   ngOnInit(): void {
-    console.log('hshhdbffshshhdfldlflfjflsjlfs')
-
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/BigBasket/GetAllCategory',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-    };
-    axios.request(config)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    
-
-
+    this.getProducts()
     this.getAllCategory()
-    console.log('chategoryList', this.categoryList)
 
+  }
+  getProducts() {
+    this.productSrv.getProducts().subscribe((res: any) => {
+      console.log(res.data)
+      this.productsList = res.data;
+    })
   }
 
   getAllCategory() {
     this.productSrv.getCategory().subscribe((res: any) => {
-      console.log('rs.data', res.data)
       this.categoryList = res.data
-
     })
+  }
+  onUpdate() {
+    this.productSrv.updateProduct(this.productObj).subscribe((res: any) => {
+      debugger;
+      if (res.result) {
+        alert("Product Updated")
+        this.getProducts()
+      } else {
+        alert(res.message)
+      }
+    })
+  }
+  onSave() {
+    this.productSrv.saveProduct(this.productObj).subscribe((res: any) => {
+      debugger;
+      console.log('res', res)
+      if (res.result) {
+        alert("Product Created")
+        this.getProducts()
+      } else {
+        alert(res.message)
+      }
+    })
+
+  }
+  onDelete(item: any) {
+    const isDelete = confirm('Are you sure want to delete')
+    if (isDelete) {
+      this.productSrv.deleteProduct(item.productId).subscribe((res: any) => {
+        debugger;
+        if (res.result) {
+          alert("Product Deleted")
+          this.getProducts()
+        } else {
+          alert(res.message)
+        }
+      })
+
+    }
+  }
+  onEdit(item: any) {
+    this.productObj = item
+    this.openSidePanel()
   }
 
   openSidePanel() {
