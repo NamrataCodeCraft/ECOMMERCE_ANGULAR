@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
     "productDescription": "",
     "createdDate": new Date(),
     "deliveryTimeSpan": "",
-    "categoryId": 58,
+    "categoryId": 59,
     "productImageUrl": "",
   }
   categoryList: any[] = []

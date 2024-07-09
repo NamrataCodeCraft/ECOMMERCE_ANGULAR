@@ -5,8 +5,8 @@
             <a class="navbar-brand fs-4 fw-bold " href="#"><i class="fa fa-cart-shopping fs-4"
                     style="color: #f54242;"></i><span class="textBlur">BigShop</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <!--Toggle  -->
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -17,27 +17,22 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-semibold text-uppercase  me-1 text-danger" href="#"
                             id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            home
+                            Categories
                         </a>
                         <ul class="dropdown-menu  " aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item " href="#">Fashion 1</a></li>
-                            <li><a class="dropdown-item" href="#">Fashion 2</a></li>
-                            <li><a class="dropdown-item" href="#">furniture 1</a></li>
-                            <li><a class="dropdown-item" href="#">furniture 2</a></li>
-                            <li><a class="dropdown-item" href="#">Electronics 1</a></li>
-                            <li><a class="dropdown-item" href="#">Electronics 1</a></li>
+                            <li *ngFor="let category of categoryList"><a class="dropdown-item "
+                                   (click)="navigateToProducts(category.categoryId)">{{category.categoryName}}</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle redHover fw-semibold text-uppercase text-black  me-1"
-                            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             pages
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">About Us</a></li>
                             <li><a class="dropdown-item" href="#">Cotact Us</a></li>
-
                             <li><a class="dropdown-item" href="#">Terms and Conditions</a></li>
                         </ul>
                     </li>
@@ -80,8 +75,8 @@
                             <li class="p-2">
                                 <div class="d-flex w-100 border-bottom justify-content-evenly">
 
-                                    <img style="height: 70px !important;width: 100px !important;"
-                                        class="img-fluid  p-2" src="product_img/cartImg2.jfif" alt="">
+                                    <img style="height: 70px !important;width: 100px !important;" class="img-fluid  p-2"
+                                        src="product_img/cartImg2.jfif" alt="">
                                     <div>
                                         <a href="#" class="text-decoration-none text-black fw-semibold">
                                             <p class="m-0 p-0">Ornare consequat</p>
@@ -113,8 +108,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle redHover fw-semibold text-uppercase text-black  me-1"
-                            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-user fs-5 me-1" style="color: #202122;"></i>
                         </a>
                         <ul class="dropdown-menu" style="left:-50px" aria-labelledby="navbarDropdown">
@@ -149,14 +143,14 @@
                 looks reasonable.</p>
         </div>
         <div class="row g-4">
-            <div class="col-lg-6 col-xl-4">
+            <div class="col-lg-6 col-xl-4" *ngFor="let product of productList">
                 <div class="p-4 rounded bg-light">
                     <div class="row align-items-center">
                         <div class="col-6">
-                            <img src="product_img/best-product-1.jpg" class="img-fluid rounded-circle w-100" alt="">
+                            <img [src]="product.productImageUrl" class="img-fluid rounded-circle w-100" alt="">
                         </div>
                         <div class="col-6">
-                            <a href="#" class="h5">Organic Tomato</a>
+                            <a href="#" class="h5">{{product.productShortName}}</a>
                             <div class="d-flex my-3">
                                 <i class="fas fa-star text-primary"></i>
                                 <i class="fas fa-star text-primary"></i>
@@ -164,195 +158,14 @@
                                 <i class="fas fa-star text-primary"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                            <h4 class="mb-3">3.12 $</h4>
+                            <h4 class="mb-3">{{product.productPrice}} $</h4>
                             <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                     class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="product_img/best-product-2.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">Organic Tomato</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4 class="mb-3">3.12 $</h4>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="product_img/best-product-3.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">Organic Tomato</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4 class="mb-3">3.12 $</h4>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="product_img/best-product-4.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">Organic Tomato</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4 class="mb-3">3.12 $</h4>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="product_img/best-product-5.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">Organic Tomato</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4 class="mb-3">3.12 $</h4>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-4">
-                <div class="p-4 rounded bg-light">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <img src="product_img/best-product-6.jpg" class="img-fluid rounded-circle w-100" alt="">
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="h5">Organic Tomato</a>
-                            <div class="d-flex my-3">
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star text-primary"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4 class="mb-3">3.12 $</h4>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="text-center">
-                    <img src="product_img/fruite-item-1.jpg" class="img-fluid rounded" alt="">
-                    <div class="py-4">
-                        <a href="#" class="h5">Organic Tomato</a>
-                        <div class="d-flex my-3 justify-content-center">
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4 class="mb-3">3.12 $</h4>
-                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="text-center">
-                    <img src="product_img/fruite-item-2.jpg" class="img-fluid rounded" alt="">
-                    <div class="py-4">
-                        <a href="#" class="h5">Organic Tomato</a>
-                        <div class="d-flex my-3 justify-content-center">
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4 class="mb-3">3.12 $</h4>
-                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="text-center">
-                    <img src="product_img/fruite-item-3.jpg" class="img-fluid rounded" alt="">
-                    <div class="py-4">
-                        <a href="#" class="h5">Organic Tomato</a>
-                        <div class="d-flex my-3 justify-content-center">
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4 class="mb-3">3.12 $</h4>
-                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="text-center">
-                    <img src="product_img/fruite-item-4.jpg" class="img-fluid rounded" alt="">
-                    <div class="py-2">
-                        <a href="#" class="h5">Organic Tomato</a>
-                        <div class="d-flex my-3 justify-content-center">
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star text-primary"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4 class="mb-3">3.12 $</h4>
-                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
