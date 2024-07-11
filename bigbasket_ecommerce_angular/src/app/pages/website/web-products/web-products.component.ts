@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../services/product/product.service';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { ProductService } from '../../../services/product/product.service';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'web-products-products',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet],
-  templateUrl: './landing.component.html',
-  styleUrl: '../../../../styles.css'
+  imports: [CommonModule, RouterLink,],
+  templateUrl: './web-products.component.html',
+  styleUrl: './web-products.component.css'
 })
-export class LandingComponent implements OnInit {
-
+export class WebProductsComponent {
+  
+  
   productList: any[] = []
   categoryList: any[] = []
   constructor(private productSrv: ProductService, private router: Router) {
@@ -27,6 +28,7 @@ export class LandingComponent implements OnInit {
   }
   getAllProducts() {
     this.productSrv.getProducts().subscribe((res: any) => {
+      debugger;
       this.productList = res.data
 
     })
@@ -36,5 +38,6 @@ export class LandingComponent implements OnInit {
       this.categoryList = res.data
     })
   }
+
 
 }
